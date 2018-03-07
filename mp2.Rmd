@@ -1,14 +1,14 @@
 ---
 title: "Mini-Project 2"
-author: "Your Name Here"
-date: "October 31, 2017"
+author: "Lynn Albright, Emily Liu, and Rachel Moskowitz"
+date: "22 March 2018"
 output: html_document
 ---
 
 
 ## Loading the data
 
-This project is so interesting and relevant to my life!
+testing push 1
 
 ```{r, include=FALSE}
 load("house_elections.rda")
