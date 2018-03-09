@@ -17,3 +17,11 @@ load("candidates.rda")
 load("committees.rda")
 load("contributions.rda")
 ```
+
+Thoughts:
+* Comparisons of swing state and non-swing state
+* Filter to one state showing interest group category
+* Look at committee id columns between committee and contributions dataset to find a join
+* Also recipient id column
+* Work on committee master file and look at interest group or committee party
+* 
