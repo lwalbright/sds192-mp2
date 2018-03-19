@@ -2,7 +2,8 @@
 title: "Mini-Project 2"
 author: "Lynn Albright, Emily Liu, and Rachel Moskowitz"
 date: "22 March 2018"
-output: html_document
+output: html_document:
+  theme: united
 ---
 
 ## Loading the data
@@ -14,6 +15,16 @@ load("house_elections.rda")
 load("candidates.rda")
 load("committees.rda")
 load("contributions.rda")
+
+library(tidyverse)
+```
+
+```{r}
+my_data <- committees %>% 
+  left_join(contributions, by = "cmte_id") 
+```
+```{r}
+my_data %>% select(cmte_id, transaction_amt, cmte_name, cmte_state, org_type, cmte_party_affiliation)
 ```
 
 
@@ -23,4 +34,5 @@ Thoughts:
 * Look at committee id columns between committee and contributions dataset to find a join
 * Also recipient id column
 * Work on committee master file and look at interest group or committee party
+* Looking at one swing state and one non-swing state or one red, one blue
 * 
