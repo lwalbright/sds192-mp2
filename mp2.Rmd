@@ -39,3 +39,5 @@ Thoughts:
 
 Final write-up notes:
 * A lot of information was missing and not all observations had data in all columns.
+
+
