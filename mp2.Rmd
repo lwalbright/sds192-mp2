@@ -5,8 +5,6 @@ date: "22 March 2018"
 output: html_document
 ---
 
-initial change
-
 ## Loading the data
 
 testing push 1-2-3
@@ -17,6 +15,7 @@ load("candidates.rda")
 load("committees.rda")
 load("contributions.rda")
 ```
+
 
 Thoughts:
 * Comparisons of swing state and non-swing state
