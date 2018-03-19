@@ -23,10 +23,9 @@ library(tidyverse)
 
 ```{r}
 my_data <- committees %>% 
-  left_join(contributions, by = "cmte_id") 
-```
-```{r}
-my_data %>% select(cmte_id, transaction_amt, cmte_name, cmte_state, org_type, cmte_party_affiliation)
+  left_join(contributions, by = "cmte_id") %>%
+  select(cmte_id, transaction_amt, cmte_name, cmte_state, org_type, cmte_party_affiliation, cmte_dsgn)
+
 ```
 
 Thoughts:
@@ -37,3 +36,6 @@ Thoughts:
 * Work on committee master file and look at interest group or committee party
 * Looking at one swing state and one non-swing state or one red, one blue
 * 
+
+Final write-up notes:
+* A lot of information was missing and not all observations had data in all columns.
