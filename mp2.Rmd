@@ -2,7 +2,8 @@
 title: "Mini-Project 2"
 author: "Lynn Albright, Emily Liu, and Rachel Moskowitz"
 date: "22 March 2018"
-output: html_document
+output: html_document:
+  theme: united
 ---
 
 initial change
