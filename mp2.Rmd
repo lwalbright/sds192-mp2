@@ -63,7 +63,7 @@ ggplot(data = my_data1, aes(x = org_type, y = transaction_amt, color = cmte_part
   ggtitle("MA Contributions to Candidates by Interest Group Type, 2011 - 2012") +
   coord_flip()
 
-# zli@smith.edu
+
 ```
 
 Thoughts:
