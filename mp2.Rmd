@@ -2,14 +2,28 @@
 title: "Mini-Project 2"
 author: "Lynn Albright, Emily Liu, and Rachel Moskowitz"
 date: "22 March 2018"
-output: html_document
+output: 
+  html_document:
+    theme: united
+    code_folding: hide
 ---
 
-initial change
+## Money in American Politics: An Overview
 
-## Loading the data
+  The mind boggling amount of cash flowing through American politics has been a major concern for politically active citizens for decades. Even at the local level, contributions are surprising in both their scale and frequency. To better understand the role of money in politics, we took a closer look at the contributions received by some congressional committees in several states in 2011 and 2012. For the purposes of this exercise, we focused on six states: Ohio, Florida, California, Massachusetts, Alabama, and Texas. Each of these states represent a different constituency in U.S. politics, so combined they provide a good overview of the country as a whole. 
 
-testing push 1-2-3
+  Despite a reputation for conservatism, Florida sends both a Democrat and a Republican senator to Washington, and more than a third of their representatives are Democrats as of March 2018. The northern panhandle of the state skews very conservative, but farther south on the peninsula, Orlando, Miami, and the Florida Keys are all bright blue. Florida is considered a swing state on the national level, despite its general conservatism. 
+
+  California is a staunchly Democratic state in national elections, but within local politics, there is a significant and well-funded Republican minority. Orange County, for example, votes Republican very regularly. The district voted for Hillary Clinton in 2016, the first time since Pres. Franklin D. Roosevelt in 1936. California is home to the American tech industry, and has thriving entertainment and tourism sectors. These famously wealthy industries contribute to a very expensive political playing field.
+
+  Massachusetts is widely regarded as the of of the most liberal states in the nation, but it still has the occasional Republican office holder. Notably, Presidential hopeful Mitt Romney held the Massachusetts governorship from 2003 to 2007. The state's liberal reputation is well-earned, however. The state's legislature is 76% Democrat as of March 2018. 
+
+  Texas is politically similar to Florida, a generally Republican state with several staunchly Democratic bastions in the major cities. Austin has a well-deserved reputation as the Southern Portland, and the Houston Pride Parade is one of the biggest in the country. Houston is the oil capital of the West, and nobody spends on politics like oil companies. 
+
+  Alabama was selected as the Republican equivalent to Massachusetts. However, like Massachusetts, Alabama occasionally votes blue. The recent victory of Rep. Doug Jones over Roy Moore illustrates this point. Alabama is also the poorest state we examined, with the 3rd lowest per-capita income of all the states, above Arkansas, West Virginia, and Mississippi. 
+
+  Whenever major national elections roll around, Ohio is the state to watch. The quintessential swing state, Ohio recieves massive national attention. We wanted to verify that that attention correlates to cashflow.
+
 
 ```{r, include=FALSE}
 load("house_elections.rda")
@@ -17,11 +31,13 @@ load("candidates.rda")
 load("committees.rda")
 load("contributions.rda")
 ```
-```{r}
+```{r, warning=FALSE, message=FALSE}
 library(tidyverse)
 ```
 
+
 ```{r}
+<<<<<<< HEAD
 my_data <- committees %>% 
   left_join(contributions, by = "cmte_id") %>%
   select(cmte_id, transaction_amt, cmte_name, cmte_state, org_type, cmte_party_affiliation, cmte_dsgn)
@@ -79,3 +95,42 @@ Final write-up notes:
 * A lot of information was missing and not all observations had data in all columns.
 
 
+=======
+
+# Generate a tbl focusing on five states
+# states <- c("MA", "CA", "TX", "AL", "OH", "FL")
+states <- c("MA", "TX", "FL", "CA", "AL", "OH")
+states_data_func <- function(state_arg) {
+  committees %>%
+  left_join(contributions, by = "cmte_id") %>%
+  filter(cmte_state == state_arg) %>%
+  select(cmte_id, transaction_amt, cmte_name, cmte_state, org_type, cmte_party_affiliation, cmte_dsgn) %>%
+  arrange(desc(org_type))
+}
+states_data <- lapply(states, FUN = states_data_func) %>%
+  bind_rows()
+```
+```{r, include = FALSE, warning=FALSE}
+states_data %>%
+  filter(!is.na(org_type)) %>%
+  filter(org_type == "")
+states_data$cmte_state = factor(states_data$cmte_state, levels = states)
+
+```
+
+```{r, warning=FALSE}
+my_plot <- ggplot(data = states_data, aes(x = org_type, y = transaction_amt)) 
+my_plot + 
+  geom_bar(fill = "forestgreen", stat = "Identity", position = "dodge") +
+  scale_x_discrete(labels = c("Corporation", "Labor org", "Membership", "Trade", "Cooperative", "Corp sans capital")) +
+  labs(x = "Group Category", y = "Transaction Amount") +
+  ggtitle("Contributions to Candidates by Interest Group Type, 2011 - 2012") +
+  coord_flip() +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  facet_wrap(~cmte_state)
+```
+
+Unsurprisingly, corporations paid the most in contributions by an incredible margin. Because the graphs are scaled uniformly, we can also see the overwhelming amount of money in Texas politics compared to the other states analyzed. This was especially surprising, common sense would dictate that California or Ohio would spend the most. However, as Texas is the seat of most American energy companies, these results are not unreasonable. The findings were otherwise unsurprising. Alabama politics are considerably less cash-soaked than the other states observed, which makes sense when one considers the relatively low per-capita income in the state. The years observed were 2011 and 2012, so this data does not include the Jones vs. Moore special election. 
+
+Much of the data in the FEC files was incomplete, which led to significant difficulty in data-wrangling. Originally we had planned to include data on the party affiliation of the committee, however, a substantial amount of this data was missing, and simply eliminating all non-partisan committees would skew the data misleadingly. Furthermore, the number of active political parties was startling, with a dozen or so in addition to the two major parties. It seemed inappropriate to completely remove all third parties, and impossible to draw a line between important third parties, i.e. The Green Party or Libertarians, and smaller, less powerful parties. 
+>>>>>>> 86d191947dcd7f1c748e4e7480048dcf84fcce6c
