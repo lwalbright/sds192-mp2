@@ -76,6 +76,7 @@ states_data$cmte_state = factor(states_data$cmte_state, levels = states)
 
 ```{r, warning=FALSE}
 # Create graphic
+library(ggthemes)
 my_plot <- ggplot(data = states_data, aes(x = org_type, y = transaction_amt)) 
 my_plot + 
   # Make a bar graph
@@ -91,10 +92,12 @@ my_plot +
   # make x axis text vertical
   theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
   # display graphics for all 6 states
-  facet_wrap(~cmte_state)
+  facet_wrap(~cmte_state) 
 ```
 
 Unsurprisingly, corporations paid the most in contributions by an incredible margin. Because the graphs are scaled uniformly, we can also see the overwhelming amount of money in Texas politics compared to the other states analyzed. This was especially surprising, common sense would dictate that California or Ohio would spend the most. However, as Texas is the seat of most American energy companies, these results are not unreasonable. The findings were otherwise unsurprising. Alabama politics are considerably less cash-soaked than the other states observed, which makes sense when one considers the relatively low per-capita income in the state. The years observed were 2011 and 2012, so this data does not include the Jones vs. Moore special election. 
 
 Much of the data in the FEC files was incomplete, which led to significant difficulty in data-wrangling. Originally we had planned to include data on the party affiliation of the committee, however, a substantial amount of this data was missing, and simply eliminating all non-partisan committees would skew the data misleadingly. Furthermore, the number of active political parties was startling, with a dozen or so in addition to the two major parties. It seemed inappropriate to completely remove all third parties, and impossible to draw a line between important third parties, i.e. The Green Party or Libertarians, and smaller, less powerful parties. 
 >>>>>>> 86d191947dcd7f1c748e4e7480048dcf84fcce6c
+
+[^1]: [Link to github repository] (https://github.com/lwalbright/sds192-mp2)
