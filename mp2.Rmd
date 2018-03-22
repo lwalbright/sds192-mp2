@@ -86,17 +86,7 @@ ggplot(data = my_data1, aes(x = org_type, y = transaction_amt, color = cmte_part
 
 ```
 
-Thoughts:
-* Comparisons of swing state and non-swing state
-* Filter to one state showing interest group category
-* Look at committee id columns between committee and contributions dataset to find a join
-* Also recipient id column
-* Work on committee master file and look at interest group or committee party
-* Looking at one swing state and one non-swing state or one red, one blue
-* 
 
-Final write-up notes:
-* A lot of information was missing and not all observations had data in all columns.
 
 
 =======
