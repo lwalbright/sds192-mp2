@@ -93,6 +93,7 @@ ggplot(data = my_data1, aes(x = org_type, y = transaction_amt, color = cmte_part
 
 # Generate a tbl focusing on five states
 # states <- c("MA", "CA", "TX", "AL", "OH", "FL")
+```{r}
 states <- c("MA", "TX", "FL", "CA", "AL", "OH")
 states_data_func <- function(state_arg) {
   committees %>%
@@ -104,6 +105,7 @@ states_data_func <- function(state_arg) {
 states_data <- lapply(states, FUN = states_data_func) %>%
   bind_rows()
 ```
+
 ```{r, include = FALSE, warning=FALSE}
 states_data %>%
   filter(!is.na(org_type)) %>%
