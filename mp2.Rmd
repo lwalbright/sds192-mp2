@@ -41,6 +41,65 @@ library(tidyverse)
 
 
 ```{r}
+<<<<<<< HEAD
+my_data <- committees %>% 
+  left_join(contributions, by = "cmte_id") %>%
+  select(cmte_id, transaction_amt, cmte_name, cmte_state, org_type, cmte_party_affiliation, cmte_dsgn)
+
+```
+
+5598 entries do not have the organization type.
+
+```{r}
+my_data <- committees %>% 
+  left_join(contributions, by = "cmte_id") %>%
+  select(cmte_id, transaction_amt, cmte_name, cmte_state, org_type, cmte_party_affiliation, cmte_dsgn) %>%
+  filter(cmte_state == "MA") %>% # DO: can generalize this into a function to use on multiple states
+  #group_by(cmte_party_affiliation) %>%
+  arrange(desc(org_type)) 
+View(my_data)
+
+```
+```{r}
+my_data %>%
+  filter(org_type == "") %>%
+  summarize(N = n())
+```
+```{r}
+# simplest graphic
+ggplot(data = my_data, aes(x = org_type, y = transaction_amt)) + geom_col()
+``` 
+
+```{r}
+my_data1 <- my_data %>%
+  filter(org_type != "") #%>%
+  #filter(cmte_party_affiliation == "DEM" || cmte_party_affiliation == "IND" || cmte_party_affiliation == "LIB" ||
+           #cmte_party_affiliation == "REP" || cmte_party_affiliation == "TEA")
+my_data1
+ggplot(data = my_data1, aes(x = org_type, y = transaction_amt, color = cmte_party_affiliation)) + 
+  geom_bar(aes(fill = cmte_party_affiliation), stat = "Identity", position = "dodge") +
+  scale_x_discrete(labels = c("Corporation", "Labor org", "Membership", "Trade", "Cooperative", "Corp sans capital")) +
+  labs(x = "Group Category", y = "Transaction Amount") +
+  ggtitle("MA Contributions to Candidates by Interest Group Type, 2011 - 2012") +
+  coord_flip()
+
+
+```
+
+Thoughts:
+* Comparisons of swing state and non-swing state
+* Filter to one state showing interest group category
+* Look at committee id columns between committee and contributions dataset to find a join
+* Also recipient id column
+* Work on committee master file and look at interest group or committee party
+* Looking at one swing state and one non-swing state or one red, one blue
+* 
+
+Final write-up notes:
+* A lot of information was missing and not all observations had data in all columns.
+
+
+=======
 
 # Generate a tbl focusing on five states
 # states <- c("MA", "CA", "TX", "AL", "OH", "FL")
