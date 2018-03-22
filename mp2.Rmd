@@ -8,7 +8,6 @@ output:
     code_folding: hide
 ---
 
-<<<<<<< HEAD
 ###Loading the data
 =======
 ###Money in American Politics: An Overview
