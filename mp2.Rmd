@@ -29,49 +29,68 @@ output:
 
 
 ```{r, include=FALSE}
+# Load data
 load("house_elections.rda")
 load("candidates.rda")
 load("committees.rda")
 load("contributions.rda")
 ```
 ```{r, warning=FALSE, message=FALSE}
+# Load library
 library(tidyverse)
 ```
 
 
-# Generate a tbl focusing on five states
-# states <- c("MA", "CA", "TX", "AL", "OH", "FL")
+
 ```{r}
+# Generate a tbl focusing on six states
+# list of states to work on
 states <- c("MA", "TX", "FL", "CA", "AL", "OH")
+# function to generate the data
 states_data_func <- function(state_arg) {
   committees %>%
+    # join contributions to committees by committee ID-the column in common
   left_join(contributions, by = "cmte_id") %>%
+    # filter by state
   filter(cmte_state == state_arg) %>%
+    # select columns to look at
   select(cmte_id, transaction_amt, cmte_name, cmte_state, org_type, cmte_party_affiliation, cmte_dsgn) %>%
+    # arrange by org type for an easier look at tbl
   arrange(desc(org_type))
 }
+# create single dataset that has data from 6 states
 states_data <- lapply(states, FUN = states_data_func) %>%
   bind_rows()
 ```
 
 ```{r, include = FALSE, warning=FALSE}
+# filter data that has organization type -- NA and blank entries
 states_data %>%
   filter(!is.na(org_type)) %>%
   filter(org_type == "")
+# make states a factor for graphic
 states_data$cmte_state = factor(states_data$cmte_state, levels = states)
 
 ```
 
 
 ```{r, warning=FALSE}
+# Create graphic
 my_plot <- ggplot(data = states_data, aes(x = org_type, y = transaction_amt)) 
 my_plot + 
+  # Make a bar graph
   geom_bar(fill = "forestgreen", stat = "Identity", position = "dodge") +
+  # label x-axis correctly
   scale_x_discrete(labels = c("Corporation", "Labor org", "Membership", "Trade", "Cooperative", "Corp sans capital")) +
+  # change axis labels
   labs(x = "Group Category", y = "Transaction Amount") +
+  # change graphic title
   ggtitle("Contributions to Candidates by Interest Group Type, 2011 - 2012") +
+  # flip graphic onto its side
   coord_flip() +
+  # make x axis text vertical
   theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  # display graphics for all 6 states
   facet_wrap(~cmte_state)
 ```
 
