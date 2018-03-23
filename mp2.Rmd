@@ -93,7 +93,7 @@ my_plot +
   facet_wrap(~cmte_state) 
 ```
 
-**From these graphs, we learn that corporations pay the most in campaign contributions compared to other types of interest group; and furthermore we learned that Texas corporations pay more than those in the other states analyzed.** 
+**From these graphs, we learn that corporations pay the most in campaign contributions compared to other types of interest groups; and furthermore we learned that Texas corporations pay more than those in the other states analyzed.** 
 
 Unsurprisingly, corporations paid the most in contributions by an incredible margin. Because the graphs are scaled uniformly, we can also see the overwhelming amount of money in Texas politics compared to the other states analyzed. This was especially surprising, common sense would dictate that California or Ohio would spend the most. However, as Texas is the seat of most American energy companies, these results are not unreasonable. The findings were otherwise unsurprising. Alabama politics are considerably less cash-soaked than the other states observed, which makes sense when one considers the relatively low per-capita income in the state. The years observed were 2011 and 2012, so this data does not include the Jones vs. Moore special election. 
 
