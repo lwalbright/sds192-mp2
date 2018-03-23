@@ -13,7 +13,7 @@ output:
 
 ###Money in American Politics: An Overview
 
-  The mind boggling amount of cash flowing through American politics has been a major concern for politically active citizens for decades. Even at the local level, contributions are surprising in both their scale and frequency. To better understand the role of money in politics, we took a closer look at the contributions received by some congressional committees in several states in 2011 and 2012. For the purposes of this exercise, we focused on six states: Ohio, Florida, California, Massachusetts, Alabama, and Texas. The project is hosted on Github, the repository link is in a footnote.[^1]
+  The mind boggling amount of cash flowing through American politics has been a major concern for politically active citizens for decades. Even at the local level, contributions are surprising in both their scale and frequency. To better understand the role of money in politics, we took a closer look at the contributions received by some congressional committees in several states in 2011 and 2012. For the purposes of this exercise, we focused on six states: Ohio, Florida, California, Massachusetts, Alabama, and Texas. The project is hosted on Github, and the repository link is in a footnote.[^1]
 
   Despite a reputation for conservatism, Florida is a swing state and sends both a Democrat and a Republican senator to Washington, and more than a third of their representatives are Democrats as of March 2018. The northern panhandle of the state skews very conservative, but farther south on the peninsula, Orlando, Miami, and the Florida Keys are all bright blue.
 
